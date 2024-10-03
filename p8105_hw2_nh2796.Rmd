@@ -123,7 +123,10 @@ results_data =
   rename(baker = x3) %>% 
   select(-x4)
 
-
+gbb_tidy = 
+  bind_rows(baker_data, bakes_data, results_data) %>% 
+  janitor::clean_names() 
 ```
 
-For the Great British Bake Off Dataset, I imported each dataset utilizing read_csv and cleaned up the columns using the janitor clean names function. In the bakes data, I renamed the column that had the bakers names for consistency and deleted a column with episode number because it did not seem to be needed here. I also edited the column names for the results data. 
+For the Great British Bake Off Dataset, I imported each dataset utilizing read_csv and cleaned up the columns using the janitor clean names function. In the bakes data, I renamed the column that had the bakers names for consistency and deleted a column with episode number because it did not seem to be needed here. I also edited the column names for the results data.
+
