@@ -99,7 +99,7 @@ trashwheel_tidy =
   
 ```
 
-Trashwheel Data Paragraph: 
+Trashwheel Data Paragraph: For this dataset i imported the data in utilizing read_excel and then specified the sheet name for each dataset. I also used the filter function to filter out NA values in the dumpter column so that I could get data that was dumpster specific only. 
 
 ##problem 3
 ```{r}
@@ -109,13 +109,21 @@ baker_data =
 
 bakes_data = 
   read_csv(file = "./data/gbb_datasets/bakes.csv") %>% 
-  janitor::clean_names()
+  janitor::clean_names() %>% 
+  rename(baker_name = baker) %>% 
+  select(-episode)
+
+
 
 results_data = 
   read_csv(file = "./data/gbb_datasets/results.csv") %>% 
-  janitor::clean_names()
+  janitor::clean_names() %>% 
+  select(-x2) %>% 
+  rename(series = x1) %>% 
+  rename(baker = x3) %>% 
+  select(-x4)
 
 
 ```
 
-
+For the Great British Bake Off Dataset, I imported each dataset utilizing read_csv and cleaned up the columns using the janitor clean names function. In the bakes data, I renamed the column that had the bakers names for consistency and deleted a column with episode number because it did not seem to be needed here. I also edited the column names for the results data. 
