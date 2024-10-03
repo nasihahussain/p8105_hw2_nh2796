@@ -1,0 +1,15 @@
+---
+title: "p8105_hw2_nh2796"
+output: github_document
+date: "2024-10-02"
+---
+##Problem 1
+
+```{r}
+library(tidyverse)
+subway_data = 
+  read_csv(file = "./data/NYC_transit.csv") %>% 
+  janitor::clean_names()
+print(subway_data)
+```
+
