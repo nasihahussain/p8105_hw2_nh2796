@@ -73,6 +73,21 @@ There are 73 distinct stations that are ADA compliant
 ##problem 2
 ```{r}
 trashwheel_data = 
-  readxl::read_excel("./data/Trashwheel.xlsx", sheet = "Mr. Trash Wheel")
+  readxl::read_excel("./data/Trashwheel.xlsx", sheet = "Mr. Trash Wheel") %>% 
+  janitor::clean_names() %>% 
+  filter(!is.na(sports_balls)) %>% 
+  mutate(sports_balls = as.integer(as.numeric(sports_balls))) %>% 
+  select(-x15, -x16) %>% 
+  filter(!is.na(dumpster))
+ 
+professor_trashwheel_data =
+  readxl::read_excel("./data/Trashwheel.xlsx", sheet = "Professor Trash Wheel") %>% 
+  janitor::clean_names() %>% 
+  filter(!is.na(dumpster))
+
+gwynnda_trashwheel_data = 
+  readxl::read_excel("./data/Trashwheel.xlsx", sheet = "Gwynnda Trash Wheel") %>% 
+  janitor::clean_names() %>% 
+  filter(!is.na(dumpster))
 ```
 
