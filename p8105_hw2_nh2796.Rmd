@@ -12,4 +12,24 @@ subway_data =
   janitor::clean_names()
 print(subway_data)
 ```
+```{r}
+subway_data <- subway_data %>% 
+  mutate(across(route1:route11, as.character))
+```
+
+```{r}
+subway_data_tidy = 
+  pivot_longer(
+    subway_data,
+    route1:route11,
+    names_to = "route_number",
+    values_to = "train"
+  )
+```
+
+```{r}
+subway_data_tidy <- subway_data_tidy %>% 
+  select(-division, -entrance_type, -staffing, -staff_hours, -east_west_street, -ada_notes, -corner )
+```
+
 
