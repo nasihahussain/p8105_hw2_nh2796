@@ -91,3 +91,31 @@ gwynnda_trashwheel_data =
   filter(!is.na(dumpster))
 ```
 
+##combining data
+```{r}
+trashwheel_tidy = 
+  bind_rows(gwynnda_trashwheel_data, professor_trashwheel_data, trashwheel_data) %>% 
+  janitor::clean_names() 
+  
+```
+
+Trashwheel Data Paragraph: 
+
+##problem 3
+```{r}
+baker_data = 
+  read_csv(file = "./data/gbb_datasets/bakers.csv") %>% 
+  janitor::clean_names()
+
+bakes_data = 
+  read_csv(file = "./data/gbb_datasets/bakes.csv") %>% 
+  janitor::clean_names()
+
+results_data = 
+  read_csv(file = "./data/gbb_datasets/results.csv") %>% 
+  janitor::clean_names()
+
+
+```
+
+
